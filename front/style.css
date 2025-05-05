@@ -1,0 +1,441 @@
+/*---------------------------------------------------
+  1. Variables pour une palette de couleurs moderne
+---------------------------------------------------*/
+:root {
+  --primary-color: #0D47A1;       /* Bleu foncé */
+  --secondary-color: #1976D2;     /* Bleu moyen */
+  --accent-color: #FF4081;        /* Accent rose */
+  --text-color: #333;
+  --bg-gradient-start: #E3F2FD;    /* Dégradé clair */
+  --bg-gradient-end: #90CAF9;      /* Dégradé plus prononcé */
+  --white: #fff;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/*---------------------------------------------------
+  2. Reset et styles globaux communs
+---------------------------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 1em;
+  color: var(--text-color);
+  background: linear-gradient(to bottom right, var(--bg-gradient-start), var(--bg-gradient-end)); /* Appliquer le dégradé au corps */
+  min-height: 100vh; /* S'assurer que le dégradé couvre toute la hauteur */
+}
+
+/*---------------------------------------------------
+  3. Spécifique aux pages d'authentification
+  (connexion et inscription)
+  => À utiliser en ajoutant class="auth-page" sur <body>
+---------------------------------------------------*/
+.auth-page {
+  /* Utilise l'image de fond pp1p, placée par exemple dans front/img/pp1p.jpg */
+  background: url("img/pp1p.jpg") no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+/*---------------------------------------------------
+  4. Header (commun à toutes les pages)
+---------------------------------------------------*/
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  /* Pour les pages d'auth, le header peut être transparent */
+  background: var(--white); /* Fond blanc pour le header sur la page des recettes */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+  margin-bottom: 1em;
+}
+
+/* Style pour le conteneur des infos utilisateur et du bouton de déconnexion */
+.user-info-container {
+    display: flex;
+    align-items: center;
+    gap: 1em; /* Espace entre le rôle et le bouton */
+}
+
+/* Style pour l'affichage du rôle */
+#user-role-display {
+    font-weight: bold;
+    color: var(--primary-color); /* Utiliser la couleur primaire pour le rôle */
+    font-size: 0.9em; /* Taille légèrement réduite */
+}
+
+
+/*---------------------------------------------------
+  5. Titres (h1, h2)
+---------------------------------------------------*/
+h1, h2 {
+  text-align: center;
+  margin-bottom: 0.5em;
+  color: var(--primary-color); /* Titres en couleur primaire */
+}
+
+/*---------------------------------------------------
+  6. Boutons modernes avec transitions
+---------------------------------------------------*/
+.btn {
+  width: 100%; /* Bouton pleine largeur dans les formulaires */
+  padding: 0.7em;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 0.5em;
+  transition: background 0.3s ease, transform 0.2s;
+  text-align: center; /* Centrer le texte du bouton */
+  display: inline-block; /* Permettre de définir la largeur pour les petits boutons */
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.03);
+}
+
+/* Style pour un bouton plus petit */
+.btn-small {
+    width: auto; /* Largeur automatique pour ne pas prendre toute la largeur */
+    padding: 0.5em 1em; /* Padding réduit */
+    margin-top: 0; /* Réinitialiser la marge supérieure */
+    font-size: 0.9em; /* Taille de police réduite */
+}
+
+
+/* Conteneur pour les boutons d'action de recette (modifier, supprimer, statut) */
+.recipe-actions {
+    margin-top: 1em;
+    display: flex;
+    flex-wrap: wrap; /* Permettre aux boutons de passer à la ligne */
+    gap: 0.5em; /* Espace entre les boutons */
+}
+
+.recipe-actions .btn {
+    flex-grow: 1; /* Permettre aux boutons de s'étirer pour remplir l'espace */
+    margin-top: 0; /* Annuler la marge top par défaut des .btn */
+    width: auto; /* Laisser flexbox gérer la largeur */
+}
+
+
+/*---------------------------------------------------
+  7. Champs de formulaire (inputs et textareas)
+---------------------------------------------------*/
+.input-text {
+  width: 100%;
+  padding: 0.6em;
+  margin-top: 0.2em;
+  margin-bottom: 0.8em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+}
+
+.input-text:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(13, 71, 161, 0.5);
+  outline: none;
+}
+
+/*---------------------------------------------------
+  8. Sections de formulaires (connexion et inscription)
+---------------------------------------------------*/
+.form-section {
+  max-width: 400px;
+  margin: 3em auto;
+  padding: 2em;
+  border-radius: 8px;
+  /* Fond semi-translucide pour laisser transparaître l'image de fond */
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/*---------------------------------------------------
+  9. Autres sections (recherche, création, admin, etc.)
+---------------------------------------------------*/
+.search-section {
+  margin-bottom: 1em;
+  text-align: center;
+  padding: 1em;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: flex; /* Utiliser flexbox pour aligner recherche et bouton langue */
+  gap: 1em; /* Espace entre les éléments */
+  flex-wrap: wrap; /* Permettre aux éléments de passer à la ligne sur petits écrans */
+  justify-content: center; /* Centrer les éléments */
+  align-items: center;
+}
+
+.search-section input {
+    flex-grow: 1; /* L'input prend le maximum d'espace disponible */
+    margin-bottom: 0; /* Enlever la marge du bas par défaut */
+}
+.search-section .btn {
+    width: auto; /* Bouton reprend sa largeur normale */
+    margin-top: 0; /* Annuler la marge du haut */
+}
+
+
+.recipe-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajuster la taille minimum des cartes */
+  gap: 1.5em; /* Augmenter l'espace entre les recettes */
+  margin-bottom: 1em;
+}
+
+.recipe-item {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 1.5em; /* Augmenter le padding interne */
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: flex; /* Utiliser flexbox pour la structure interne */
+  flex-direction: column; /* Empiler les éléments */
+  justify-content: space-between; /* Espacer les éléments */
+}
+
+.recipe-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+}
+
+/* Style pour les recettes non publiées (visuellement distinctes) */
+.recipe-item.recipe-draft {
+    border: 2px dashed #ccc; /* Bordure en pointillé */
+    opacity: 0.8; /* Légèrement transparentes */
+}
+
+
+.recipe-photo {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 1em 0; /* Plus d'espace autour de la photo */
+  display: block; /* S'assurer que l'image prend toute la largeur disponible et se positionne sur sa propre ligne */
+  object-fit: cover; /* Assurer que l'image couvre la zone sans déformation */
+  max-height: 200px; /* Limiter la hauteur de l'image */
+}
+
+.null-count {
+  font-size: 0.9em;
+  color: #888;
+  margin-bottom: 1em; /* Ajouter un peu d'espace en dessous */
+}
+
+.create-recipe-section {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 1.5em;
+  margin-bottom: 1em;
+  box-shadow: var(--shadow);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.admin-users {
+  background: var(--white);
+  padding: 1em;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  margin-top: 2em; /* Plus d'espace au-dessus */
+}
+
+.user-item {
+  border: 1px solid #ddd;
+  padding: 0.8em;
+  margin-bottom: 0.6em;
+  border-radius: 4px;
+  display: flex; /* Utiliser flexbox pour aligner les éléments utilisateur */
+  flex-wrap: wrap; /* Permettre le passage à la ligne */
+  gap: 1em; /* Espace entre les éléments */
+  align-items: center;
+}
+
+.user-item label, .user-item select, .user-item button {
+    margin-top: 0; /* Annuler la marge top par défaut de .btn */
+}
+
+.user-item select {
+    flex-grow: 1; /* Permettre au select de prendre de l'espace */
+}
+
+
+/*---------------------------------------------------
+  10. Overlay pour les commentaires (avec animation)
+---------------------------------------------------*/
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+  overflow-y: auto; /* Permettre le défilement si le contenu est trop long */
+  padding: 1em; /* Ajouter un peu de padding autour de l'overlay */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.overlay-content {
+  background: var(--white);
+  max-width: 600px;
+  margin: 2em auto;
+  padding: 1.5em; /* Augmenter le padding */
+  position: relative;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+  display: flex; /* Centrer le X */
+  justify-content: center;
+  align-items: center;
+  line-height: 1; /* Ajuster la hauteur de ligne */
+}
+
+.close-btn:hover {
+  background: var(--secondary-color);
+}
+
+/* Styles pour les commentaires individuels */
+.comment-item {
+    border-bottom: 1px solid #eee;
+    padding: 0.8em 0; /* Augmenter le padding */
+    margin-bottom: 0.8em; /* Augmenter la marge */
+}
+
+.comment-item:last-child {
+    border-bottom: none; /* Pas de bordure pour le dernier commentaire */
+}
+
+.comment-item strong {
+    color: var(--primary-color); /* Mettre l'auteur en couleur */
+}
+
+/* Style pour la textarea des commentaires */
+#comment-text {
+    margin-bottom: 0.5em; /* Réduire l'espace sous la textarea */
+}
+
+
+/* Styles spécifiques au formulaire de modification dans l'overlay */
+#edit-recipe-overlay .form-container {
+    margin-top: 1em; /* Espace entre le titre et le formulaire */
+}
+
+
+/*---------------------------------------------------
+  11. Adaptation pour mobile
+---------------------------------------------------*/
+@media (max-width: 768px) { /* Ajuster le breakpoint pour une meilleure adaptation */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.8em; /* Réduire le padding du header */
+  }
+    .user-info-container {
+        flex-direction: column; /* Empiler les infos utilisateur et le bouton sur mobile */
+        align-items: flex-start;
+        gap: 0.5em;
+        margin-top: 0.5em;
+        width: 100%; /* Prendre toute la largeur */
+    }
+    #user-role-display, .btn-small {
+        width: 100%; /* Les éléments prennent toute la largeur */
+        text-align: left; /* Aligner le texte à gauche */
+    }
+    .btn-small {
+        padding: 0.6em 1em; /* Ajuster le padding du bouton small */
+    }
+
+
+  .form-section, .admin-users {
+    padding: 1em; /* Réduire le padding des sections */
+  }
+
+    .search-section {
+        flex-direction: column; /* Empiler les éléments de recherche */
+        gap: 0.8em;
+        padding: 0.8em;
+    }
+    .search-section input, .search-section .btn {
+        width: 100%; /* Les éléments de recherche prennent toute la largeur */
+        margin: 0; /* Réinitialiser les marges */
+    }
+
+
+    .recipe-list {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajuster la taille min des cartes sur petits écrans */
+        gap: 1em; /* Réduire l'espace entre les recettes */
+    }
+
+    .recipe-item {
+        padding: 1em; /* Réduire le padding interne des recettes */
+    }
+
+    .recipe-actions {
+        flex-direction: column; /* Empiler les boutons d'action */
+        gap: 0.5em;
+    }
+     .recipe-actions .btn {
+         width: 100%; /* Boutons d'action pleine largeur sur mobile */
+         flex-grow: 0; /* Annuler le flex-grow */
+     }
+
+
+     .overlay-content {
+         margin: 1em auto; /* Réduire la marge autour de l'overlay content */
+         padding: 1em; /* Réduire le padding de l'overlay content */
+         max-width: 95%; /* Limiter la largeur sur les très petits écrans */
+     }
+
+     .user-item {
+         flex-direction: column; /* Empiler les éléments utilisateur */
+         align-items: flex-start;
+         gap: 0.5em;
+     }
+     .user-item label, .user-item select, .user-item button {
+         width: 100%; /* Les éléments utilisateur prennent toute la largeur */
+     }
+     .user-item select {
+        flex-grow: 0; /* Annuler le flex-grow */
+     }
+
+
+}

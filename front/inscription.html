@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Inscription</title>
+  <!-- Police moderne Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>S'inscrire</h1>
+  </header>
+  
+  <!-- Formulaire centré avec la classe form-section -->
+  <section class="form-section">
+    <form id="register-form" class="form-container">
+      <label>Nom :
+        <input type="text" id="name" class="input-text" required>
+      </label>
+      <label>Email :
+        <input type="email" id="email" class="input-text" required>
+      </label>
+      <label>Mot de passe :
+        <input type="password" id="password" class="input-text" required>
+      </label>
+      <!-- Optionnel : demande de rôle -->
+      <label>Demande de rôle (chef ou traducteur) :
+        <input type="text" id="role-demand" class="input-text">
+      </label>
+      <button type="submit" class="btn">Inscription</button>
+    </form>
+  </section>
+  
+  <script src="script.js"></script>
+</body>
+</html>

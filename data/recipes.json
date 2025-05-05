@@ -1,0 +1,87 @@
+{
+    "recipe_1": {
+        "title_fr": "Roti \u00e0 la cocotte",
+        "title_en": "Crock Pot Roast",
+        "ingredients_fr": [
+            "roti de boeuf",
+            "sachet de sauce au vin",
+            "condiments",
+            "condiments",
+            "1\/2 verre d'eau"
+        ],
+        "ingredients_en": [
+            "beef roast",
+            "brown gravy mix",
+            "dried Italian salad dressing mix",
+            "dry ranch dressing mix",
+            "1\/2 cup water"
+        ],
+        "steps_fr": [
+            "Placer le roti dans la cocotte en fonte",
+            "M\u00e9langer les sachets de sauce en poudre et saupoudrer le roti",
+            "Arroser le roti",
+            "Cuire \u00e0 feu doux 7-9 heures"
+        ],
+        "steps_en": [
+            "Place beef roast in a crock pot",
+            "Mix dried mixes and sprinkle over the roast",
+            "Pour water around the roast",
+            "Cook on low for 7-9 hours"
+        ],
+        "author": "Unknown",
+        "photo": "http:\/\/img.sndimg.com\/food\/image\/upload\/w_266\/v1\/img\/recipes\/27\/20\/8\/picVfzLZo.jpg",
+        "status": "publiee",
+        "likes": 9,
+        "liked_by": []
+    },
+    "recipe_2": {
+        "title_fr": "Asperges r\u00f4ties",
+        "title_en": "Roasted Asparagus",
+        "ingredients_fr": [
+            "asperges",
+            "huile d'olive",
+            "sel"
+        ],
+        "ingredients_en": [
+            "asparagus",
+            "olive oil",
+            "kosher salt"
+        ],
+        "steps_fr": [
+            "Pr\u00e9chauffer le four \u00e0 425\u00b0F",
+            "Couper la base des asperges",
+            "Peler la base",
+            "Disposer sur une plaque, arroser et saupoudrer",
+            "Cuire 10-15 minutes"
+        ],
+        "steps_en": [
+            "Preheat oven to 425\u00b0F",
+            "Trim the asparagus",
+            "Peel the base",
+            "Arrange on a baking sheet, drizzle with oil and sprinkle salt",
+            "Roast for 10-15 minutes"
+        ],
+        "author": "Unknown",
+        "photo": "http:\/\/img.sndimg.com\/food\/image\/upload\/w_266\/v1\/img\/recipes\/50\/84\/7\/picMcSyVd.jpg",
+        "status": "draft",
+        "likes": 4,
+        "liked_by": []
+    },
+    "recipe_3": {
+        "title_fr": "hal",
+        "title_en": null,
+        "ingredients_fr": [
+            "kefmkwefm"
+        ],
+        "ingredients_en": [],
+        "steps_fr": [
+            "voila doc et la "
+        ],
+        "steps_en": [],
+        "author": "user_4",
+        "photo": "https:\/\/www.shutterstock.com\/fr\/image-photo\/delicious-pistachio-kataifi-dubai-chocolate-bar-2589537931",
+        "status": "draft",
+        "likes": 0,
+        "liked_by": []
+    }
+}

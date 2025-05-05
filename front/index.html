@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Accueil - Recettes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Recettes</h1>
+    <div class="user-info-container">
+      <span id="user-role-display"></span> <button id="logout-btn" class="btn btn-small">Déconnexion</button> </div>
+  </header>
+
+  <section class="search-section">
+    <input id="search-input" type="text" placeholder="Rechercher une recette..." class="input-text">
+    <button id="toggle-lang" class="btn">Basculer FR/EN</button>
+  </section>
+
+  <section id="recipe-list" class="recipe-list">
+    </section>
+
+  <section id="create-recipe-section" class="create-recipe-section" style="display:none;">
+    <h2>Créer une nouvelle recette (Chef / Admin)</h2>
+    <form id="create-recipe-form" class="form-container">
+      <label>Titre (FR):
+        <input id="title-fr" type="text" class="input-text">
+      </label>
+      <label>Titre (EN):
+        <input id="title-en" type="text" class="input-text">
+      </label>
+      <label>Ingrédients (FR) (un par ligne):
+        <textarea id="ingredients-fr" rows="3" class="input-text"></textarea>
+      </label>
+      <label>Ingrédients (EN) (un par ligne):
+        <textarea id="ingredients-en" rows="3" class="input-text"></textarea>
+      </label>
+      <label>Étapes (FR) (une par ligne):
+        <textarea id="steps-fr" rows="3" class="input-text"></textarea>
+      </label>
+      <label>Étapes (EN) (une par ligne):
+        <textarea id="steps-en" rows="3" class="input-text"></textarea>
+      </label>
+      <label>URL photo:
+        <input id="photo-url" type="text" class="input-text">
+      </label>
+      <button type="submit" class="btn">Créer</button>
+    </form>
+  </section>
+
+  <section id="user-list" class="admin-users" style="display:none;">
+    </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

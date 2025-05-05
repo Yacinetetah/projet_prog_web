@@ -1,0 +1,14 @@
+{
+    "comment_1": {
+        "recipe_id": "recipe_1",
+        "user_id": "user_1",
+        "text": "Delicious recipe!",
+        "date": "2025-04-02 23:09:14"
+    },
+    "comment_2": {
+        "recipe_id": "recipe_2",
+        "user_id": "user_4",
+        "text": "ddd",
+        "date": "2025-05-05 17:41:20"
+    }
+}

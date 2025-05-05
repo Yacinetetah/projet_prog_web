@@ -1,0 +1,32 @@
+{
+    "user_1": {
+        "email": "admin@monapp.com",
+        "password": "secret",
+        "name": "SuperAdmin",
+        "role": "admin"
+    },
+    "user_2": {
+        "email": "yacineteta@gmail.com",
+        "password": "1234azer",
+        "name": "Yass",
+        "role": "cuisinier"
+    },
+    "user_3": {
+        "email": "test@gmail.com",
+        "password": "azer",
+        "name": "test1",
+        "role": "demandeChef"
+    },
+    "user_4": {
+        "email": "sisi@gmail.com",
+        "password": "1234",
+        "name": "sisi",
+        "role": "chef"
+    },
+    "user_5": {
+        "email": "yak@gmail.com",
+        "password": "1234",
+        "name": "yak",
+        "role": "demandeChef"
+    }
+}
