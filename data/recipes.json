@@ -45,7 +45,7 @@
         "ingredients_en": [
             "asparagus",
             "olive oil",
-            "kosher salt"
+            "kosher salt."
         ],
         "steps_fr": [
             "Pr\u00e9chauffer le four \u00e0 425\u00b0F",
@@ -63,23 +63,23 @@
         ],
         "author": "Unknown",
         "photo": "http:\/\/img.sndimg.com\/food\/image\/upload\/w_266\/v1\/img\/recipes\/50\/84\/7\/picMcSyVd.jpg",
-        "status": "draft",
+        "status": "terminee",
         "likes": 4,
         "liked_by": []
     },
-    "recipe_3": {
-        "title_fr": "hal",
+    "recipe_681950feb21c47.13064588": {
+        "title_fr": "pizza",
         "title_en": null,
         "ingredients_fr": [
-            "kefmkwefm"
+            "pinach"
         ],
         "ingredients_en": [],
         "steps_fr": [
-            "voila doc et la "
+            "alors puis fin \/\/\/"
         ],
         "steps_en": [],
         "author": "user_4",
-        "photo": "https:\/\/www.shutterstock.com\/fr\/image-photo\/delicious-pistachio-kataifi-dubai-chocolate-bar-2589537931",
+        "photo": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/9\/91\/Pizza-3007395.jpg",
         "status": "draft",
         "likes": 0,
         "liked_by": []

@@ -38,9 +38,13 @@ $routes = [
 $found = false;
 if (isset($routes[$requestMethod])) {
     foreach ($routes[$requestMethod] as $route => $action) {
-        // Remplacement du paramètre {id} par une expression régulière
-        $pattern = preg_replace('/\{[a-zA-Z]+\}/', '([a-zA-Z0-9_\-]+)', $route);
-        $pattern = '#^' . $pattern . '$#';
+        // Remplacement du paramètre {id} par une expression régulière incluant le point '.'
+        // L'expression régulière (([a-zA-Z0-9_\.\-]+)) capture les lettres, chiffres, underscores, points et tirets.
+        $pattern = preg_replace('/\{[a-zA-Z]+\}/', '([a-zA-Z0-9_\.\-]+)', $route);
+        // Ajouter les ancres de début et fin et rendre le slash final optionnel (pour plus de flexibilité)
+        $pattern = '#^' . $pattern . '/?$#';
+
+
         if (preg_match($pattern, $requestUri, $matches)) {
             $found = true;
             // On retire le match complet

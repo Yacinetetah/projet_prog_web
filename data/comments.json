@@ -10,5 +10,11 @@
         "user_id": "user_4",
         "text": "ddd",
         "date": "2025-05-05 17:41:20"
+    },
+    "comment_3": {
+        "recipe_id": "recipe_2",
+        "user_id": "user_1",
+        "text": "good",
+        "date": "2025-05-06 00:14:19"
     }
 }

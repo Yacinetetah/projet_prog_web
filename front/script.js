@@ -115,11 +115,15 @@ async function loadUsers() {
         return; // Arrêter la fonction
     }
 
-    const { ok, data } = await ajaxRequest('GET', '/users');
+    // Si l'utilisateur est admin, tenter de charger la liste
+    const { ok, data, status } = await ajaxRequest('GET', '/users');
     if (!ok) {
-        alert("Erreur loadUsers: " + (data.error || ''));
+        // Afficher l'erreur si le chargement échoue (par exemple, 403 Forbidden si la vérif serveur échoue)
+        alert("Erreur loadUsers (" + status + "): " + (data.error || ''));
+         const container = document.getElementById('user-list');
+         if(container) container.style.display = 'none'; // S'assurer qu'elle est masquée en cas d'erreur
     } else {
-        renderUsers(data);
+        renderUsers(data); // Afficher la liste si succès
     }
 }
 
@@ -127,7 +131,10 @@ function renderUsers(usersObj) {
     const container = document.getElementById('user-list');
     if (!container) return;
     container.style.display = 'block'; // S'assurer qu'elle est visible pour l'admin
+
+    // Conserver le titre, vider le reste
     container.innerHTML = `<h2>Liste des utilisateurs</h2>`;
+
     // Convertir l'objet d'utilisateurs en tableau pour itérer plus facilement
     const usersArray = Object.entries(usersObj).map(([id, user]) => ({ id, ...user }));
 
@@ -135,24 +142,25 @@ function renderUsers(usersObj) {
      // usersArray.sort((a, b) => a.role.localeCompare(b.role));
 
 
-    usersArray.forEach(([userId, userData]) => { // Itérer sur le tableau
+    // Correction ici : Itérer sur chaque objet utilisateur dans le tableau
+    usersArray.forEach(user => {
         const div = document.createElement('div');
         div.className = 'user-item';
         div.innerHTML = `
-          <p><strong>ID:</strong> ${userId}</p>
-          <p><strong>Nom:</strong> ${userData.name}</p>
-          <p><strong>Email:</strong> ${userData.email}</p>
-          <p><strong>Rôle actuel:</strong> ${userData.role}</p>
+          <p><strong>ID:</strong> ${user.id}</p>
+          <p><strong>Nom:</strong> ${user.name}</p>
+          <p><strong>Email:</strong> ${user.email}</p>
+          <p><strong>Rôle actuel:</strong> ${user.role}</p>
           <label>Choisir un nouveau rôle :</label>
-          <select id="role-select-${userId}" class="input-text">
-            <option value="admin" ${userData.role === 'admin' ? 'selected' : ''}>admin</option>
-            <option value="chef" ${userData.role === 'chef' ? 'selected' : ''}>chef</option>
-            <option value="traducteur" ${userData.role === 'traducteur' ? 'selected' : ''}>traducteur</option>
-            <option value="cuisinier" ${userData.role === 'cuisinier' ? 'selected' : ''}>cuisinier</option>
-            <option value="demandeChef" ${userData.role === 'demandeChef' ? 'selected' : ''}>demandeChef</option>
-            <option value="demandeTraducteur" ${userData.role === 'demandeTraducteur' ? 'selected' : ''}>demandeTraducteur</option>
+          <select id="role-select-${user.id}" class="input-text">
+            <option value="admin" ${user.role === 'admin' ? 'selected' : ''}>admin</option>
+            <option value="chef" ${user.role === 'chef' ? 'selected' : ''}>chef</option>
+            <option value="traducteur" ${user.role === 'traducteur' ? 'selected' : ''}>traducteur</option>
+            <option value="cuisinier" ${user.role === 'cuisinier' ? 'selected' : ''}>cuisinier</option>
+            <option value="demandeChef" ${user.role === 'demandeChef' ? 'selected' : ''}>demandeChef</option>
+            <option value="demandeTraducteur" ${user.role === 'demandeTraducteur' ? 'selected' : ''}>demandeTraducteur</option>
           </select>
-          <button class="btn-update-role btn btn-small" data-id="${userId}">Mettre à jour</button>
+          <button class="btn-update-role btn btn-small" data-id="${user.id}">Mettre à jour</button>
         `;
         container.appendChild(div);
     });
@@ -161,7 +169,7 @@ function renderUsers(usersObj) {
         btn.addEventListener('click', async () => {
             const userId = btn.dataset.id;
             const newRole = document.getElementById(`role-select-${userId}`).value;
-            // Empêcher l'admin de changer son propre rôle (pour éviter de se bloquer)
+            // Empêcher l'admin de changer son propre rôle vers un rôle non-admin (pour éviter de se bloquer)
             if (userId === getCurrentUserId() && newRole !== 'admin') {
                  alert("Vous ne pouvez pas changer votre propre rôle d'administrateur vers un autre rôle.");
                  // Réinitialiser la sélection
@@ -187,11 +195,8 @@ async function updateUserRole(userId, newRole) {
         // Si l'admin change son propre rôle (ce que le front empêche en partie), recharger pour mettre à jour l'affichage
         if (userId === getCurrentUserId()) {
              setUserSession(getCurrentUserId(), newRole, getCurrentUserName()); // Mettre à jour localStorage
-             // Pas besoin de recharger la page entière, le header se mettra à jour si bien codé,
-             // mais pour simplifier, on peut recharger la liste ou juste l'affichage du rôle.
-             // Pour l'instant, on recharge la liste des utilisateurs pour voir le changement.
-             loadUsers(); // Recharger la liste des utilisateurs
-             // Si le rôle devient non-admin, la section utilisateur sera masquée au rechargement de la liste.
+             // Pour simplifier, on recharge la liste des utilisateurs pour voir le changement et potentiellement masquer la section si le rôle n'est plus admin.
+             loadUsers();
         } else {
             loadUsers(); // Recharger la liste des utilisateurs pour les autres
         }
@@ -746,7 +751,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const userList = document.getElementById('user-list');
         if (userList && getCurrentUserRole() === 'admin') {
-            loadUsers();
+            loadUsers(); // Charger la liste des utilisateurs si l'utilisateur est admin
+        } else if (userList) {
+             userList.style.display = 'none'; // S'assurer qu'elle est masquée si l'utilisateur n'est PAS admin
         }
     }
     // Déconnexion
